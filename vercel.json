@@ -1,5 +1,5 @@
 {
   "rewrites": [
-    { "source": "/qr-code", "destination": "/social-qr-code/index.html" }
+    { "source": "/social-qr-code", "destination": "/social-qr-code/index.html" }
   ]
 }
