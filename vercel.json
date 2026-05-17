@@ -1,5 +1,13 @@
 {
   "rewrites": [
     { "source": "/social-qr-code", "destination": "/social-qr-code/index.html" }
+  ],
+  "headers": [
+    {
+      "source": "/social-qr-code",
+      "headers": [
+        { "key": "Content-Type", "value": "text/html" }
+      ]
+    }
   ]
 }
