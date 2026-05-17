@@ -9,18 +9,17 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@200;300;400&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
-      --gold: #B8965A;
-      --gold-light: #D4B483;
-      --gold-pale: #EDD99A;
-      --dark: #0D0B08;
-      --text: #F5EDD8;
-      --muted: #9A8B70;
+      --green: #3D6B35;
+      --green-light: #5A8F4F;
+      --green-pale: #A8C9A0;
+      --dark: #0D1A0B;
+      --dark2: #162413;
+      --text: #E8F0E6;
+      --muted: #7A9B72;
+      --cream: #F0F5EE;
     }
-
     html, body { height: 100%; min-height: 100vh; }
-
     body {
       font-family: 'Jost', sans-serif;
       background: var(--dark);
@@ -33,7 +32,6 @@
       overflow: hidden;
       position: relative;
     }
-
     .bg-orb {
       position: fixed;
       border-radius: 50%;
@@ -42,20 +40,20 @@
     }
     .orb1 {
       width: 500px; height: 500px;
-      background: radial-gradient(circle, rgba(184,150,90,0.15) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(61,107,53,0.20) 0%, transparent 70%);
       top: -150px; left: -150px;
       animation: orbFloat 12s ease-in-out infinite;
     }
     .orb2 {
       width: 400px; height: 400px;
-      background: radial-gradient(circle, rgba(184,150,90,0.10) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(61,107,53,0.15) 0%, transparent 70%);
       bottom: -100px; right: -100px;
       animation: orbFloat 12s ease-in-out infinite;
       animation-delay: -6s;
     }
     .orb3 {
       width: 300px; height: 300px;
-      background: radial-gradient(circle, rgba(212,180,131,0.08) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(90,143,79,0.10) 0%, transparent 70%);
       top: 50%; left: 50%;
       animation: orbFloat3 10s ease-in-out infinite;
     }
@@ -68,13 +66,11 @@
       0%, 100% { transform: translate(-50%, -50%) scale(1); }
       50% { transform: translate(-50%, -50%) scale(1.2); }
     }
-
-    .deco-line { position: fixed; pointer-events: none; opacity: 0.15; }
-    .deco-line.top { top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(to right, transparent, var(--gold), transparent); }
-    .deco-line.bottom { bottom: 0; left: 0; right: 0; height: 1px; background: linear-gradient(to right, transparent, var(--gold), transparent); }
-    .deco-line.left { left: 0; top: 0; bottom: 0; width: 1px; background: linear-gradient(to bottom, transparent, var(--gold), transparent); }
-    .deco-line.right { right: 0; top: 0; bottom: 0; width: 1px; background: linear-gradient(to bottom, transparent, var(--gold), transparent); }
-
+    .deco-line { position: fixed; pointer-events: none; opacity: 0.12; }
+    .deco-line.top { top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(to right, transparent, var(--green-light), transparent); }
+    .deco-line.bottom { bottom: 0; left: 0; right: 0; height: 1px; background: linear-gradient(to right, transparent, var(--green-light), transparent); }
+    .deco-line.left { left: 0; top: 0; bottom: 0; width: 1px; background: linear-gradient(to bottom, transparent, var(--green-light), transparent); }
+    .deco-line.right { right: 0; top: 0; bottom: 0; width: 1px; background: linear-gradient(to bottom, transparent, var(--green-light), transparent); }
     .main {
       position: relative;
       z-index: 2;
@@ -84,22 +80,21 @@
       text-align: center;
       padding: 40px 24px;
       width: 100%;
-      max-width: 700px;
+      max-width: 680px;
     }
-
     .badge {
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      border: 0.5px solid rgba(184,150,90,0.4);
+      border: 0.5px solid rgba(61,107,53,0.5);
       padding: 8px 20px;
       border-radius: 100px;
-      margin-bottom: 48px;
+      margin-bottom: 40px;
       animation: fadeDown 0.8s ease both;
     }
     .badge-dot {
       width: 6px; height: 6px;
-      background: var(--gold);
+      background: var(--green-light);
       border-radius: 50%;
       animation: blink 2s ease-in-out infinite;
     }
@@ -111,80 +106,68 @@
       font-size: 11px;
       letter-spacing: 3px;
       text-transform: uppercase;
-      color: var(--gold-light);
+      color: var(--green-pale);
       font-weight: 300;
     }
-
-    .brand-wrap {
-      margin-bottom: 20px;
+    .logo-wrap {
+      margin-bottom: 32px;
       animation: fadeUp 0.9s ease 0.1s both;
+      background: rgba(255,255,255,0.06);
+      border-radius: 20px;
+      padding: 20px 32px;
+      border: 0.5px solid rgba(61,107,53,0.25);
     }
-    .brand {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(52px, 12vw, 88px);
-      font-weight: 300;
-      letter-spacing: 6px;
-      color: var(--text);
-      line-height: 1;
-      text-transform: uppercase;
+    .logo-wrap img {
+      width: 220px;
+      height: auto;
+      object-fit: contain;
+      filter: brightness(0) invert(1) sepia(1) hue-rotate(80deg) saturate(0.6) brightness(1.8);
     }
-    .brand span {
-      color: var(--gold);
-      font-style: italic;
-      font-weight: 400;
-      letter-spacing: 4px;
-    }
-
     .gold-rule {
       display: flex;
       align-items: center;
       gap: 16px;
-      margin: 28px 0;
-      width: 280px;
+      margin: 8px 0 28px;
+      width: 260px;
       animation: fadeUp 0.9s ease 0.2s both;
     }
     .gold-rule::before, .gold-rule::after {
       content: '';
       flex: 1;
       height: 0.5px;
-      background: var(--gold);
-      opacity: 0.5;
+      background: var(--green-light);
+      opacity: 0.4;
     }
     .gold-rule-diamond {
       width: 7px; height: 7px;
-      background: var(--gold);
+      background: var(--green-light);
       transform: rotate(45deg);
-      opacity: 0.8;
+      opacity: 0.7;
       flex-shrink: 0;
     }
-
     .tagline {
       font-family: 'Cormorant Garamond', serif;
       font-size: clamp(18px, 4vw, 26px);
       font-weight: 300;
       font-style: italic;
-      color: var(--gold-light);
+      color: var(--green-pale);
       letter-spacing: 1px;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
       animation: fadeUp 0.9s ease 0.25s both;
     }
-
     .sub {
-      font-size: 13px;
-      letter-spacing: 2px;
+      font-size: 12px;
+      letter-spacing: 2.5px;
       text-transform: uppercase;
       color: var(--muted);
       font-weight: 200;
-      margin-bottom: 56px;
+      margin-bottom: 48px;
+      animation: fadeUp 0.9s ease 0.3s both;
     }
-
-
-
-    /* Social links */
     .socials {
       display: flex;
       gap: 24px;
-      animation: fadeUp 0.9s ease 0.5s both;
+      animation: fadeUp 0.9s ease 0.4s both;
     }
     .social-link {
       display: flex;
@@ -201,11 +184,10 @@
       transition: color 0.2s, border-color 0.2s;
     }
     .social-link:hover {
-      color: var(--gold-light);
-      border-bottom-color: rgba(184,150,90,0.4);
+      color: var(--green-pale);
+      border-bottom-color: rgba(61,107,53,0.5);
     }
     .social-link svg { width: 14px; height: 14px; fill: currentColor; }
-
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(24px); }
       to { opacity: 1; transform: translateY(0); }
@@ -214,7 +196,6 @@
       from { opacity: 0; transform: translateY(-16px); }
       to { opacity: 1; transform: translateY(0); }
     }
-
     .footer {
       position: fixed;
       bottom: 24px;
@@ -223,17 +204,16 @@
       font-size: 10px;
       letter-spacing: 2px;
       text-transform: uppercase;
-      color: rgba(154,139,112,0.4);
+      color: rgba(122,155,114,0.35);
       z-index: 2;
     }
-
     @media (max-width: 480px) {
-      .count-item { min-width: 55px; }
+      .logo-wrap img { width: 160px; }
+      .logo-wrap { padding: 16px 24px; }
     }
   </style>
 </head>
 <body>
-
   <div class="bg-orb orb1"></div>
   <div class="bg-orb orb2"></div>
   <div class="bg-orb orb3"></div>
@@ -241,40 +221,28 @@
   <div class="deco-line bottom"></div>
   <div class="deco-line left"></div>
   <div class="deco-line right"></div>
-
   <main class="main" role="main">
-
     <div class="badge">
       <div class="badge-dot"></div>
       <span class="badge-text">Something beautiful is coming</span>
     </div>
-
-    <div class="brand-wrap">
-      <h1 class="brand">Aham<span>cure</span></h1>
+    <div class="logo-wrap">
+      <img src="social-qr-code/AhamCure_logo.jpeg" alt="AhamCure" />
     </div>
-
     <div class="gold-rule"><div class="gold-rule-diamond"></div></div>
-
-    <p class="tagline">Wellness rooted in nature, healing rooted in you.</p>
+    <p class="tagline">Balance your life, naturally.</p>
     <p class="sub">Our website is under construction</p>
-
-
-
     <div class="socials">
-      <a class="social-link" href="https://www.facebook.com/share/18Bojk3x4L/" target="_blank" rel="noopener" aria-label="Facebook">
+      <a class="social-link" href="https://www.facebook.com/share/18Bojk3x4L/" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
         Facebook
       </a>
-      <a class="social-link" href="https://www.instagram.com/invites/contact/?utm_source=ig_contact_invite&utm_medium=copy_link&utm_content=i94yleu" target="_blank" rel="noopener" aria-label="Instagram">
+      <a class="social-link" href="https://www.instagram.com/invites/contact/?utm_source=ig_contact_invite&utm_medium=copy_link&utm_content=i94yleu" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
         Instagram
       </a>
     </div>
-
   </main>
-
   <footer class="footer">© 2026 AhamCure · All rights reserved</footer>
-
-  <script></script>
 </body>
 </html>
